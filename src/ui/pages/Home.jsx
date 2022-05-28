@@ -12,6 +12,7 @@ const Wrapper = styled.div`
   align-items: center;
   width: 100%;
   height: 100%;
+  background: ${theme.colors.green};
 `
 
 const Image = styled.img`
@@ -162,7 +163,7 @@ export const Home = () => {
                   <Text>Выберите задачу</Text>
                   <ActionCard>
                     <img src="imgs/camera.jpg" height="140px" width="190px"></img>
-                    
+
                   </ActionCard>
 
                   <ActionCard>
