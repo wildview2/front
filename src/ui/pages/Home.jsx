@@ -5,10 +5,10 @@ import { theme } from "./../../theme"
 import { Calendarr } from "../components/Calendar"
 import Calendar from 'react-calendar'
 import 'react-calendar/dist/Calendar.css'
+import { Link } from "react-router-dom"
 
 const Wrapper = styled.div`
   display: flex;
-  position: relative;
   align-items: center;
   width: 100%;
   height: 100%;
@@ -152,12 +152,12 @@ export const Home = () => {
                   <CalendarWrapper>
                     <Calendar onChange={(arr)=>{// arr[0] первая дата, arr[1] вторая
                       
-                      }} value={valueCalendar}  selectRange={true} returnValue="range"/>
+                      }} value={valueCalendar} selectRange={true} returnValue="range"/>
                   </CalendarWrapper>
                   
                 </Left>
                 
-                  <Divider/>
+                <Divider/>
                  
                 <Right>
                   <Text>Выберите задачу</Text>
@@ -172,6 +172,10 @@ export const Home = () => {
                 </Right>
             </Main>
             {state.toString()}
+            <Link to ='/rookery/3?from=2007&to=2010'>
+              Тык
+            </Link>
+            
            
             
         </Content>

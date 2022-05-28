@@ -3,6 +3,7 @@ import { Route } from "react-router"
 import { BrowserRouter, Routes } from "react-router-dom"
 import { Home } from "./ui/pages/Home"
 import { Registr } from "./ui/pages/registration"
+import { Rookery } from "./ui/pages/Rookery"
 
 export default function App() {
   return (
@@ -11,6 +12,7 @@ export default function App() {
         <Route exact path="/" element={<Registr />} />
         <Route exact path="/registration" element={<Home />} />
         <Route exact path="/asdasd" element={<Registr />} />
+        <Route exact path="/rookery/:id" element={<Rookery />}/>
       </Routes>
     </BrowserRouter>
   )
