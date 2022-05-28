@@ -8,7 +8,6 @@ import 'react-calendar/dist/Calendar.css'
 import { Link } from "react-router-dom"
 
 
-
 export const Wrapper = styled.div`
   display: flex;
   align-items: center;
