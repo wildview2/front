@@ -80,7 +80,7 @@ border: 3px solid white;
 border-radius:10px;
 margin: 50px 5px 0px 5px;
 `
-const Text = styled.div`
+export const Text = styled.div`
   color: white;
   text-align: center;
   font-style: normal;
@@ -122,7 +122,11 @@ const ActionCard = styled.div`
   width:80%;
   padding:20px;
 `
-
+function getParams(from, to){
+  //if (to && from) return ("from="+from.getYear()+"-"+from.getMonth()+"-"+from.getDate() +"&to=" + to.getYear()+"-"+to.getMonth()+"-"+to.getDate())
+  if (to && from) return ("from="+from.toISOString().split('T')[0] +"&to=" + to.toISOString().split('T')[0])
+  else return ""
+}
 export const Home = () => {
   const [state, setState] = React.useState(false)
   const [legbishe, setLegbishe] = React.useState()
@@ -151,7 +155,9 @@ export const Home = () => {
                   
                   <CalendarWrapper>
                     <Calendar onChange={(arr)=>{// arr[0] первая дата, arr[1] вторая
-                      
+                        setDateFrom(arr[0])
+                        setDateTo(arr[1])
+                        //alert(arr[0].getDate())
                       }}  selectRange={true} returnValue="range"/>
                   </CalendarWrapper>
                   
@@ -173,12 +179,9 @@ export const Home = () => {
                   </Link>
                 </Right>
             </Main>
-            <Link to ='/rookery/3?from=2007&to=2010'>
+            <Link to ={"/rookery/3?"+getParams(dateFrom, dateTo)}>
               Тык
             </Link>
-            
-           
-            
         </Content>
     </Wrapper>
   )
