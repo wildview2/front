@@ -5,8 +5,10 @@ import { theme } from "./../../theme"
 import { Calendarr } from "../components/Calendar"
 import Calendar from 'react-calendar'
 import 'react-calendar/dist/Calendar.css'
+import { Link } from "react-router-dom"
 
 const Wrapper = styled.div`
+overflow:
   display: flex;
   position: relative;
   align-items: center;
@@ -161,14 +163,16 @@ export const Home = () => {
                  
                 <Right>
                   <Text>Выберите задачу</Text>
+                  <Link to="/Zagruzka">
                   <ActionCard>
                     <img src="imgs/camera.jpg" height="140px" width="190px"></img>
-
                   </ActionCard>
-
+                  </Link>
+                  <Link to="/Home">
                   <ActionCard>
                     <img src="imgs/squares.jpg" height="160px" width="160px"></img>
                   </ActionCard>
+                  </Link>
                 </Right>
             </Main>
             {state.toString()}

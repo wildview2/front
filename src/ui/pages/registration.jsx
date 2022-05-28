@@ -2,7 +2,7 @@ import React from "react"
 
 import styled from "styled-components"
 import Background from "./../imgs/bg.jpg"
-import { theme } from "./../../theme"
+import { theme } from "../../theme"
 import { Link } from "react-router-dom"
 
 const Wrapper = styled.div`
@@ -78,7 +78,7 @@ export const Registr = () => {
         <Block>
           <Text>Добро пожаловать!</Text>
           <Input placeholder="Пароль" />
-          <Link to="/registration">
+          <Link to="/Home">
             <Submit>Продолжить</Submit>
           </Link>
         </Block>
