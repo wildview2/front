@@ -25,6 +25,12 @@ const Info = styled.div`
     line-height: 46px;
 `
 
+const ImageMark = styled.div`
+    text-align:center;
+    font-size:20px;
+    padding:7px;
+`
+
 function avgValruses(list){
     let sum = 0
     alert(list[0])
@@ -72,7 +78,14 @@ export const Rookery = ()=>{
                 <br />
                 <br />
                 {list.map(item=>
-                            <div key={item.photo}><img src={`http://127.0.0.1:8082/rookeries/${item.photo}/photo`}height="600px" width="600px"></img></div>
+                            <div key={item.photo}>
+                                <ImageMark>Дата {item.dat}</ImageMark>
+                                <ImageMark>Количество детекций {item.valruses_number}</ImageMark>
+                                <div>
+                                 <img src={`http://127.0.0.1:8082/rookeries/${item.photo}/photo`}height="600px" width="600px"></img>
+                                </div>
+                                
+                            </div>
                         )}
                 
             </Content>

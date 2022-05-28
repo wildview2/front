@@ -156,7 +156,8 @@ export const Zagruzka = () => {
 
     const dataArray = new FormData();
     dataArray.append("data", data);
-    dataArray.append("upload_file", uploadFile.files[0]);
+    dataArray.append("upload_file", uploadFile.item(0));
+    console.log(typeof(uploadFile))
     dataArray.append('id',id)
 
     axios
@@ -189,7 +190,7 @@ export const Zagruzka = () => {
                     <Text>24-27 мая 2022</Text>
                 </Place>
                 </UnderHeader>
-                <img src="imgs/photo.png" height="250px" width="320px" onClick={<input type="file"/>} ></img>
+                
                 <div>
                   <form onSubmit={submitForm}>
                     <input
@@ -203,7 +204,9 @@ export const Zagruzka = () => {
                       placeholder={"id лежбища"}
                     />
                     <br />
-                    <input type="file" onChange={(e) => setUploadFile(e.target.files)} />
+                    <input type="file" onChange={(e) => {
+                      setUploadFile(e.target.files)}
+                   }/>
                     <br />
                     <input type="submit" />
                   </form>
