@@ -2,7 +2,6 @@ import React from "react"
 import Background from "./../imgs/bg.jpg"
 import styled from "styled-components"
 import { theme } from "./../../theme"
-import { Calendarr } from "../components/Calendar"
 import Calendar from 'react-calendar'
 import 'react-calendar/dist/Calendar.css'
 import { Link } from "react-router-dom"

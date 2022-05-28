@@ -84,7 +84,7 @@ export const Rookery = ()=>{
                                 <ImageMark>Дата {item.dat}</ImageMark>
                                 <ImageMark>Количество детекций {item.valruses_number}</ImageMark>
                                 <div>
-                                 <img src={`http://127.0.0.1:8082/rookeries/${item.photo}/photo`}height="600px" width="600px"></img>
+                                 <img src={`http://127.0.0.1:8082/rookeries/${item.photo}/photo`}height="auto" width="1250px"></img>
                                 </div>
                                 
                             </div>
