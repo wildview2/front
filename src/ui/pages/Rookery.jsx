@@ -62,7 +62,9 @@ export const Rookery = ()=>{
             <Content>
                 <Head>
                     <Zag>Wildview</Zag>
+                    <Link to="/">
                     <Submit>Выйти</Submit>
+                    </Link>
                 </Head>
                 <UnderHeader>
                     <Link to="/Home">

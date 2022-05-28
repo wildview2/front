@@ -1,5 +1,4 @@
 import React from "react"
-
 import styled from "styled-components"
 import Background from "./../imgs/bg.jpg"
 import { theme } from "../../theme"
@@ -57,7 +56,9 @@ const Input = styled.input`
   height: auto;
 `
 
+
 const Submit = styled.button`
+text-decoration-color: rgba(225 225 225 0.62);
   cursor: pointer;
   display: flex;
   justify-content: center;
@@ -77,7 +78,7 @@ export const Registr = () => {
       <Content>
         <Block>
           <Text>Добро пожаловать!</Text>
-          <Input placeholder="Пароль" />
+          <Input placeholder="Пароль" type="password"/>
           <Link to="/Home">
             <Submit>Продолжить</Submit>
           </Link>

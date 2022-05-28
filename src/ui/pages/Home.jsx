@@ -253,7 +253,7 @@ export const Home = () => {
                   </ActionCard>
                   </Submitt>
                   </Link>
-                  <Link to="/Home">
+                  <Link to ={"/rookery/" + id+"?"+getParams(dateFrom, dateTo)}>
                   <Submitt>
                   <ActionCard>
                     <img src="imgs/squares.jpg" height="160px" width="160px"></img>
@@ -263,9 +263,6 @@ export const Home = () => {
                   </Link>
                 </Right>
             </Main>
-            <Link to ={"/rookery/" + id+"?"+getParams(dateFrom, dateTo)}>
-              Тык
-            </Link>
         </Content>
     </Wrapper>
   )
