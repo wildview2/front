@@ -71,12 +71,13 @@ const Left = styled.div`
   justify-content: end;
   `
 const Right = styled.div`
-  
-
+ 
 `
-const Center = styled.div`
-  
-
+const Divider = styled.div`
+height = 90%;
+border: 3px solid white;
+border-radius:10px;
+margin: 50px 5px 0px 5px;
 `
 const Text = styled.span`
   color: white;
@@ -91,6 +92,7 @@ const Input = styled.input`
   margin: 30px auto 30px auto;
   width:70%;
   background: white;
+  placeholder: 
   border-radius: 16px;
   padding: 16px;
   height: auto;
@@ -143,9 +145,9 @@ export const Home = () => {
                   </CalendarWrapper>
                   
                 </Left>
-                <Center>
-                      в центре
-                </Center>
+                
+                  <Divider></Divider>
+                 
                 <Right>
                   справа
                 </Right>
