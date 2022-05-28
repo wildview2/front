@@ -25,17 +25,31 @@ const Info = styled.div`
     line-height: 46px;
 `
 
+function avgValruses(list){
+    let sum = 0
+    alert(list[0])
+    for (let item in list)
+    {
+        sum+=item.valruses_number 
+    }
+    return sum/list.length
+}
+
 export const Rookery = ()=>{
     const rookery  = useParams(); //rookery.id это id лежбища
     const filters = useSearchParams();
     const from = filters[0].get('from') //это с какой даты
     const to = filters[0].get('to') //это по какую
-    const [list, setList] = React.useState()
+    const [list, setList] = React.useState([])
+    const [data, setData] = React.useState([])
     const [hasList, setHasList] = React.useState(false)
     if (!hasList){
-        fetch("http://localhost:8082/rookeries/"+rookery.id+"/periods?datestart="+from+"&dateend=" +to).then(response=>response.json()).then(setList)
+        fetch(`http://localhost:8082/rookeries/${rookery.id}/periods?datestart=${from}&dateend=${to}`).then(response=>response.json()).then(setList)
         setHasList(true)
+        //alert(list)
     }
+
+    
        // alert(rookery.id)
     return (
         <Wrapper >
@@ -51,8 +65,16 @@ export const Rookery = ()=>{
                     <Place>
                         <Info>Лежбище {rookery.id} </Info>
                         <Info>{from} — {to}</Info>
+                        
                     </Place>
                 </UnderHeader>
+                Всего изображений за данный период: {list.length}
+                <br />
+                <br />
+                {list.map(item=>
+                            <div key={item.photo}><img src={`http://127.0.0.1:8082/rookeries/${item.photo}/photo`}height="600px" width="600px"></img></div>
+                        )}
+                
             </Content>
         </Wrapper>
     );

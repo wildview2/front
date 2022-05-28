@@ -1,6 +1,9 @@
 import React from "react"
+import Background from "./../imgs/bg.jpg"
 import styled from "styled-components"
 import { theme } from "./../../theme"
+import { Calendarr } from "../components/Calendar"
+import Calendar from 'react-calendar'
 import 'react-calendar/dist/Calendar.css'
 import { Link } from "react-router-dom"
 import axios from 'axios' 
@@ -135,23 +138,29 @@ flex-direction: column;
 `
 
 export const Zagruzka = () => {
+  const [state, setState] = React.useState(false)
+  const [legbishe, setLegbishe] = React.useState()
+  const [date, Calendarr] = React.useState()
 
+  const [valueCalendar, onChangeCalendar] = React.useState(new Date());
+
+  const [dateFrom,setDateFrom]=React.useState()
+  const [dateTo,setDateTo]=React.useState()
 
   const [uploadFile, setUploadFile] = React.useState();
-  const [superHero, setSuperHero] = React.useState();
+  const [data, setdata] = React.useState();
+  const [id, setID] = React.useState();
   
   const submitForm = (event) => {
     event.preventDefault();
 
     const dataArray = new FormData();
-    dataArray.append("superHeroName", superHero);
-    dataArray.append("uploadFile", uploadFile);
+    dataArray.append("data", data);
+    dataArray.append("upload_file", uploadFile.files[0]);
+    dataArray.append('id',id)
 
     axios
-      .post("api_url_here", dataArray, {
-        headers: {
-          "Content-Type": "multipart/form-data"
-        }
+      .post("http://localhost:8082/rookeries/id/add", dataArray, {
       })
       .then((response) => {
         // successfully uploaded response
@@ -180,10 +189,20 @@ export const Zagruzka = () => {
                     <Text>24-27 мая 2022</Text>
                 </Place>
                 </UnderHeader>
-                                <div>
+                <img src="imgs/photo.png" height="250px" width="320px" onClick={<input type="file"/>} ></img>
+                <div>
                   <form onSubmit={submitForm}>
-                  <img src="imgs/photo.png" height="250px" width="320px" onClick={<input type="file"/>} ></img>
-
+                    <input
+                      type="text"
+                      onChange={(e) => setdata(e.target.value)}
+                      placeholder={"Дата съёмки"}
+                    />
+                    <input
+                      type="number"
+                      onChange={(e) => setID(e.target.value)}
+                      placeholder={"id лежбища"}
+                    />
+                    <br />
                     <input type="file" onChange={(e) => setUploadFile(e.target.files)} />
                     <br />
                     <input type="submit" />

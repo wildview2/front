@@ -61,6 +61,16 @@ export const Submit = styled.button`
   height: auto;
   opacity: 0.62;
 `
+const Submitt = styled.button`
+  cursor: pointer;
+  color: black;
+  font-size: 20px;
+  justify-content: center;
+  background: #A8B8A3;
+  border: unset;
+  opacity: 0.62;
+`
+
 const Main = styled.div`
   display: grid;
   grid-template-columns: 1fr 50px 1fr;
@@ -120,9 +130,15 @@ const ActionCard = styled.div`
   flex-direction: row;
   background: rgba(255, 255, 255, 0.62); 
   border-radius:10px;
-  margin: 30px auto;
-  width:80%;
+  margin: 30px;
+  width:400px;
   padding:20px;
+  align-items:center;
+`
+
+const DivActionCard = styled.div`
+  decoration: none;
+  font-size: 30px;
 `
 
 const Select = styled.button`
@@ -189,7 +205,9 @@ export const Home = () => {
         <Content>
             <Head>
                 <Zag>Wildview</Zag>
+                <Link to="/">
                 <Submit>Выйти</Submit>
+                </Link>
             </Head>
             <Main>
                 <Left>
@@ -226,15 +244,22 @@ export const Home = () => {
                  
                 <Right>
                   <Text>Выберите задачу</Text>
+                  
                   <Link to="/Zagruzka">
+                  <Submitt>
                   <ActionCard>
                     <img src="imgs/camera.jpg" height="140px" width="190px"></img>
+                    <DivActionCard>Загрузить изображения</DivActionCard>
                   </ActionCard>
+                  </Submitt>
                   </Link>
                   <Link to="/Home">
+                  <Submitt>
                   <ActionCard>
                     <img src="imgs/squares.jpg" height="160px" width="160px"></img>
+                    <DivActionCard>Посмотреть статистику</DivActionCard>
                   </ActionCard>
+                  </Submitt>
                   </Link>
                 </Right>
             </Main>
