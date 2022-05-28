@@ -30,8 +30,13 @@ export const Rookery = ()=>{
     const filters = useSearchParams();
     const from = filters[0].get('from') //это с какой даты
     const to = filters[0].get('to') //это по какую
-
-   // alert(rookery.id)
+    const [list, setList] = React.useState()
+    const [hasList, setHasList] = React.useState(false)
+    if (!hasList){
+        fetch("http://localhost:8082/rookeries/"+rookery.id+"/periods?datestart="+from+"&dateend=" +to).then(response=>response.json()).then(setList)
+        setHasList(true)
+    }
+       // alert(rookery.id)
     return (
         <Wrapper >
             <Content>

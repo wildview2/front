@@ -1,9 +1,6 @@
 import React from "react"
-import Background from "./../imgs/bg.jpg"
 import styled from "styled-components"
 import { theme } from "./../../theme"
-import { Calendarr } from "../components/Calendar"
-import Calendar from 'react-calendar'
 import 'react-calendar/dist/Calendar.css'
 import { Link } from "react-router-dom"
 import axios from 'axios' 
@@ -138,14 +135,7 @@ flex-direction: column;
 `
 
 export const Zagruzka = () => {
-  const [state, setState] = React.useState(false)
-  const [legbishe, setLegbishe] = React.useState()
-  const [date, Calendarr] = React.useState()
 
-  const [valueCalendar, onChangeCalendar] = React.useState(new Date());
-
-  const [dateFrom,setDateFrom]=React.useState()
-  const [dateTo,setDateTo]=React.useState()
 
   const [uploadFile, setUploadFile] = React.useState();
   const [superHero, setSuperHero] = React.useState();
@@ -190,15 +180,10 @@ export const Zagruzka = () => {
                     <Text>24-27 мая 2022</Text>
                 </Place>
                 </UnderHeader>
-                <img src="imgs/photo.png" height="250px" width="320px" onClick={<input type="file"/>} ></img>
-                <div>
+                                <div>
                   <form onSubmit={submitForm}>
-                    <input
-                      type="text"
-                      onChange={(e) => setSuperHero(e.target.value)}
-                      placeholder={"Superhero Name"}
-                    />
-                    <br />
+                  <img src="imgs/photo.png" height="250px" width="320px" onClick={<input type="file"/>} ></img>
+
                     <input type="file" onChange={(e) => setUploadFile(e.target.files)} />
                     <br />
                     <input type="submit" />

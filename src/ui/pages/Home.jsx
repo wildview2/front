@@ -164,21 +164,26 @@ function getParams(from, to){
   if (to && from) return ("from="+from.toISOString().split('T')[0] +"&to=" + to.toISOString().split('T')[0])
   else return ""
 }
-
+//getRooks()
 export const Home = () => {
-  const [state, setState] = React.useState(false)
-  const [legbishe, setLegbishe] = React.useState()
-  const [date, Calendarr] = React.useState()
   const [isOpened, setIsOpened] = React.useState()
   const [selected, setSelected] = React.useState(null)
-
-  const [valueCalendar, onChangeCalendar] = React.useState(new Date());
-
+  const [data, setdata] = React.useState([])
+  const [hasData, setHasData] = React.useState(false)
+  const [id, setId]=React.useState(1)
+  if (!hasData){
+    fetch("http://localhost:8082/rookeries").then(response=>response.json()).then(setdata)
+    setHasData(true)
+  }
   const [dateFrom,setDateFrom]=React.useState()
   const [dateTo,setDateTo]=React.useState()
+   let datar
+  // let data=[]
+ // alert(data)
+  //console.log(data)
 
-  const data =[{name: "Один", data: "один"},{name: "Два", data: "два"},{name: "Три", data: "три"},]
-
+  //const data2=fetch("localhost:8082/rookeries").then(res=>)
+  
   return (
     <Wrapper >
         <Content>
@@ -193,7 +198,10 @@ export const Home = () => {
                     {selected}
                     {isOpened && 
                     <Items>
-                      {data.map((el)=> <Item onClick={()=> setSelected(el.name)}>{el.name}</Item>)}
+                      {data.map((el)=> <Item onClick={()=> {
+                        setSelected(el.name);
+                        setId(el.id)
+                        }}>{el.name}</Item>)}
                     </Items>
                    }
                   </Select>
@@ -230,7 +238,7 @@ export const Home = () => {
                   </Link>
                 </Right>
             </Main>
-            <Link to ={"/rookery/3?"+getParams(dateFrom, dateTo)}>
+            <Link to ={"/rookery/" + id+"?"+getParams(dateFrom, dateTo)}>
               Тык
             </Link>
         </Content>
