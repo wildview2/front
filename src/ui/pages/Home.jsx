@@ -7,19 +7,19 @@ import Calendar from 'react-calendar'
 import 'react-calendar/dist/Calendar.css'
 import { Link } from "react-router-dom"
 
-const Wrapper = styled.div`
-overflow:
+
+
+export const Wrapper = styled.div`
   display: flex;
   align-items: center;
   width: 100%;
   height: 100%;
   background: ${theme.colors.green};
 `
-
 const Image = styled.img`
   object-fit: cover;
 `
-const Content = styled.div`
+export const Content = styled.div`
   position: absolute;
   display: flex;
   flex-direction: column;
@@ -30,7 +30,7 @@ const Content = styled.div`
   height: 100%;
   background: ${theme.colors.green};
 `
-const Head = styled.div`
+export const Head = styled.div`
   display:flex;
   align-items: center;
   justify-content: space-between;
@@ -40,7 +40,7 @@ const Head = styled.div`
   top: 0px;
   background: rgba(255, 255, 255, 0.62); 
 `
-const Zag = styled.span`
+export const Zag = styled.span`
   color: black;
   text-align: center;
   font-style: normal;
@@ -48,7 +48,7 @@ const Zag = styled.span`
   font-size: 89px;
   padding: 17px 0px 17px 41px;
 `
-const Submit = styled.button`
+export const Submit = styled.button`
   cursor: pointer;
   color: black;
   margin-right: 50px;
@@ -135,7 +135,7 @@ export const Home = () => {
   const [dateTo,setDateTo]=React.useState()
 
   return (
-    <Wrapper onClick={() => setState(!state)}>
+    <Wrapper >
         <Content>
             <Head>
                 <Zag>Wildview</Zag>
@@ -153,7 +153,7 @@ export const Home = () => {
                   <CalendarWrapper>
                     <Calendar onChange={(arr)=>{// arr[0] первая дата, arr[1] вторая
                       
-                      }} value={valueCalendar} selectRange={true} returnValue="range"/>
+                      }}  selectRange={true} returnValue="range"/>
                   </CalendarWrapper>
                   
                 </Left>
@@ -174,7 +174,6 @@ export const Home = () => {
                   </Link>
                 </Right>
             </Main>
-            {state.toString()}
             <Link to ='/rookery/3?from=2007&to=2010'>
               Тык
             </Link>
