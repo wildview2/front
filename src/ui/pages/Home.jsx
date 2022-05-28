@@ -1,8 +1,10 @@
 import React from "react"
 import Background from "./../imgs/bg.jpg"
 import styled from "styled-components"
-import Calendarr from "../components/Calendar"
 import { theme } from "./../../theme"
+import { Calendarr } from "../components/Calendar"
+import Calendar from 'react-calendar'
+import 'react-calendar/dist/Calendar.css'
 
 const Wrapper = styled.div`
   display: flex;
@@ -37,7 +39,7 @@ const Head = styled.div`
   background: rgba(255, 255, 255, 0.62); 
 `
 const Zag = styled.span`
-color: black;
+  color: black;
   text-align: center;
   font-style: normal;
   font-weight: 400;
@@ -46,7 +48,9 @@ color: black;
 `
 const Submit = styled.button`
   cursor: pointer;
-  display: flex;
+  color: black;
+  margin-right: 50px;
+  font-size: 20px;
   justify-content: center;
   width: 200px;
   background: #A8B8A3;
@@ -57,40 +61,42 @@ const Submit = styled.button`
   opacity: 0.62;
 `
 const Main = styled.div`
-  display: flex;
-
+  display: grid;
+  grid-template-columns: 1fr 50px 1fr;
+  width: 95%
 `
 const Left = styled.div`
   display: flex;
   flex-direction: column;
-`
+  justify-content: end;
+  `
 const Right = styled.div`
-  display: flex;
+  
 
 `
 const Center = styled.div`
-  display: flex;
+  
 
 `
 const Text = styled.span`
-color: black;
+  color: white;
   text-align: center;
   font-style: normal;
   font-weight: 400;
-  font-size: 89px;
-  padding: 17px 0px 17px 41px;
+  font-size: 50px;
+  padding: 17px 0px 17px 17px;
+  
 `
 const Input = styled.input`
-  display: flex;
-  width: 100%;
+  margin: 30px auto 30px auto;
+  width:70%;
   background: white;
-  border: unset;
   border-radius: 16px;
   padding: 16px;
   height: auto;
 `
 const Calendarik = styled.div`
-display: flex;
+  display: flex;
   width: 100%;
   background: white;
   border: unset;
@@ -99,10 +105,19 @@ display: flex;
   height: 100px;
 `
 
+const CalendarWrapper = styled.div`
+  margin: 30px auto 30px auto;
+`
+
 export const Home = () => {
   const [state, setState] = React.useState(false)
   const [legbishe, setLegbishe] = React.useState()
   const [date, Calendarr] = React.useState()
+
+  const [valueCalendar, onChangeCalendar] = React.useState(new Date());
+
+  const [dateFrom,setDateFrom]=React.useState()
+  const [dateTo,setDateTo]=React.useState()
 
   return (
     <Wrapper onClick={() => setState(!state)}>
@@ -112,27 +127,32 @@ export const Home = () => {
                 <Submit>Выйти</Submit>
             </Head>
             <Main>
-              <Left>
-                <Text>Выберите лежбище и дату</Text>
-                <Input
-                type='text'
-                value={legbishe}
-                onChange={e=>setLegbishe(e.target.value)}>
-                </Input>
-                <Calendarik
-                type
-                value={date}
-                onChange={e=>Calendarr(e.target.value)}>
-                </Calendarik>
-              </Left>
-              <Center>
-
-              </Center>
-              <Right>
-
-              </Right>
+                <Left>
+                  <Text>Выберите лежбище и дату</Text>
+                  <Input
+                    type='text'
+                    value={legbishe}
+                    onChange={e=>setLegbishe(e.target.value)}>
+                  </Input>
+                  
+                  <CalendarWrapper>
+                    <Calendar onChange={(arr)=>{// arr[0] первая дата, arr[1] вторая
+                      alert(arr)
+                      
+                      }} value={valueCalendar}  selectRange={true} returnValue="range"/>
+                  </CalendarWrapper>
+                  
+                </Left>
+                <Center>
+                      в центре
+                </Center>
+                <Right>
+                  справа
+                </Right>
             </Main>
             {state.toString()}
+           
+            
         </Content>
     </Wrapper>
   )
