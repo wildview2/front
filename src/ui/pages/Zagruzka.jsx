@@ -124,7 +124,7 @@ const ActionCard = styled.div`
   width:80%;
   padding:20px;
 `
-const UnderHeader = styled.div`
+export const UnderHeader = styled.div`
 display: flex;
 width: 90%;
 height: auto;
@@ -132,7 +132,7 @@ margin: 7px;
 justify-content: space-between;
 
 `
-const Place = styled.div`
+export const Place = styled.div`
 display: flex
 flex-direction: column;
 `

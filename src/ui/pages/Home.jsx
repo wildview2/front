@@ -7,19 +7,18 @@ import Calendar from 'react-calendar'
 import 'react-calendar/dist/Calendar.css'
 import { Link } from "react-router-dom"
 
-const Wrapper = styled.div`
-overflow:
+
+export const Wrapper = styled.div`
   display: flex;
   align-items: center;
   width: 100%;
   height: 100%;
   background: ${theme.colors.green};
 `
-
 const Image = styled.img`
   object-fit: cover;
 `
-const Content = styled.div`
+export const Content = styled.div`
   position: absolute;
   display: flex;
   flex-direction: column;
@@ -30,7 +29,7 @@ const Content = styled.div`
   height: 100%;
   background: ${theme.colors.green};
 `
-const Head = styled.div`
+export const Head = styled.div`
   display:flex;
   align-items: center;
   justify-content: space-between;
@@ -40,7 +39,7 @@ const Head = styled.div`
   top: 0px;
   background: rgba(255, 255, 255, 0.62); 
 `
-const Zag = styled.span`
+export const Zag = styled.span`
   color: black;
   text-align: center;
   font-style: normal;
@@ -48,7 +47,7 @@ const Zag = styled.span`
   font-size: 89px;
   padding: 17px 0px 17px 41px;
 `
-const Submit = styled.button`
+export const Submit = styled.button`
   cursor: pointer;
   color: black;
   margin-right: 50px;
@@ -81,7 +80,7 @@ border: 3px solid white;
 border-radius:10px;
 margin: 50px 5px 0px 5px;
 `
-const Text = styled.div`
+export const Text = styled.div`
   color: white;
   text-align: center;
   font-style: normal;
@@ -124,7 +123,11 @@ const ActionCard = styled.div`
   padding:20px;
 `
 
-
+function getParams(from, to){
+  //if (to && from) return ("from="+from.getYear()+"-"+from.getMonth()+"-"+from.getDate() +"&to=" + to.getYear()+"-"+to.getMonth()+"-"+to.getDate())
+  if (to && from) return ("from="+from.toISOString().split('T')[0] +"&to=" + to.toISOString().split('T')[0])
+  else return ""
+}
 
 export const Home = () => {
   const [state, setState] = React.useState(false)
@@ -137,7 +140,7 @@ export const Home = () => {
   const [dateTo,setDateTo]=React.useState()
 
   return (
-    <Wrapper onClick={() => setState(!state)}>
+    <Wrapper >
         <Content>
             <Head>
                 <Zag>Wildview</Zag>
@@ -154,8 +157,10 @@ export const Home = () => {
                   
                   <CalendarWrapper>
                     <Calendar onChange={(arr)=>{// arr[0] первая дата, arr[1] вторая
-                      
-                      }} value={valueCalendar} selectRange={true} returnValue="range"/>
+                        setDateFrom(arr[0])
+                        setDateTo(arr[1])
+                        //alert(arr[0].getDate())
+                      }}  selectRange={true} returnValue="range"/>
                   </CalendarWrapper>
                   
                 </Left>
@@ -176,13 +181,9 @@ export const Home = () => {
                   </Link>
                 </Right>
             </Main>
-            {state.toString()}
-            <Link to ='/rookery/3?from=2007&to=2010'>
+            <Link to ={"/rookery/3?"+getParams(dateFrom, dateTo)}>
               Тык
             </Link>
-            
-           
-            
         </Content>
     </Wrapper>
   )
