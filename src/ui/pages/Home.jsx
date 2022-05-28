@@ -71,7 +71,7 @@ const Left = styled.div`
   justify-content: end;
   `
 const Right = styled.div`
- 
+  
 `
 const Divider = styled.div`
 height = 90%;
@@ -79,13 +79,14 @@ border: 3px solid white;
 border-radius:10px;
 margin: 50px 5px 0px 5px;
 `
-const Text = styled.span`
+const Text = styled.div`
   color: white;
   text-align: center;
   font-style: normal;
   font-weight: 400;
   font-size: 50px;
   padding: 17px 0px 17px 17px;
+  margin:10px auto;
   
 `
 const Input = styled.input`
@@ -109,6 +110,16 @@ const Calendarik = styled.div`
 
 const CalendarWrapper = styled.div`
   margin: 30px auto 30px auto;
+`
+
+const ActionCard = styled.div`
+  display:flex;
+  flex-direction: row;
+  background: rgba(255, 255, 255, 0.62); 
+  border-radius:10px;
+  margin: 30px auto;
+  width:80%;
+  padding:20px;
 `
 
 export const Home = () => {
@@ -139,17 +150,24 @@ export const Home = () => {
                   
                   <CalendarWrapper>
                     <Calendar onChange={(arr)=>{// arr[0] первая дата, arr[1] вторая
-                      alert(arr)
                       
                       }} value={valueCalendar}  selectRange={true} returnValue="range"/>
                   </CalendarWrapper>
                   
                 </Left>
                 
-                  <Divider></Divider>
+                  <Divider/>
                  
                 <Right>
-                  справа
+                  <Text>Выберите задачу</Text>
+                  <ActionCard>
+                    <img src="imgs/camera.jpg" height="140px" width="190px"></img>
+                    
+                  </ActionCard>
+
+                  <ActionCard>
+                    <img src="imgs/squares.jpg" height="160px" width="160px"></img>
+                  </ActionCard>
                 </Right>
             </Main>
             {state.toString()}
