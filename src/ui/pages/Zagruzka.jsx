@@ -5,6 +5,7 @@ import { theme } from "./../../theme"
 import { Calendarr } from "../components/Calendar"
 import Calendar from 'react-calendar'
 import 'react-calendar/dist/Calendar.css'
+import { Link } from "react-router-dom"
 
 const Wrapper = styled.div`
 overflow: auto
@@ -67,6 +68,7 @@ const Main = styled.div`
   width: 100%;
   height: 100%;
   flex-direction: column;
+  align-items: center;
 `
 const Left = styled.div`
   display: flex;
@@ -83,14 +85,12 @@ border-radius:10px;
 margin: 50px 5px 0px 5px;
 `
 const Text = styled.div`
-  color: white;
+  color: black;
   text-align: center;
   font-style: normal;
-  font-weight: 400;
-  font-size: 50px;
-  padding: 17px 0px 17px 17px;
-  margin:10px auto;
-  
+  font-weight: 100;
+  font-size: 30px;
+  margin:10px;
 `
 const Input = styled.input`
   margin: 30px auto 30px auto;
@@ -126,14 +126,15 @@ const ActionCard = styled.div`
 `
 const UnderHeader = styled.div`
 display: flex;
-width: 100%;
-height: 40px;
+width: 90%;
+height: auto;
 margin: 7px;
 justify-content: space-between;
 
 `
-const arrow = styled.div`
-
+const Place = styled.div`
+display: flex
+flex-direction: column;
 `
 
 export const Zagruzka = () => {
@@ -147,17 +148,26 @@ export const Zagruzka = () => {
   const [dateTo,setDateTo]=React.useState()
 
   return (
-    <Wrapper onClick={() => setState(!state)}>
+    <Wrapper >
         <Content>
             <Head>
                 <Zag>Wildview</Zag>
+                <Link to="/">
                 <Submit>Выйти</Submit>
+                </Link>
             </Head>
             <Main>
                 <UnderHeader>
-                <Image src="../img/Arrow1.png" width="100%" height="100%" />
+                <Link to="/Home">
+                <img src="imgs/ar.png" height="30px" width="100px"></img>
+                </Link>
+                <Place>
+                    <Text>Лежбище 1 </Text>
+                    <Text>24-27 мая 2022</Text>
+                </Place>
                 </UnderHeader>
-                
+                <img src="imgs/photo.png" height="250px" width="320px" onClick={<input type="file"/>} ></img>
+
             </Main>       
         </Content>
     </Wrapper>

@@ -16,8 +16,7 @@ export default function App() {
 
         <Route exact path="/Home" element={<Home />} />
         <Route exact path="/Zagruzka" element={<Zagruzka />} />
-        <Route exact path="/registration" element={<Home />} />
-        <Route exact path="/asdasd" element={<Registr />} />
+        <Route exact path="/registration" element={<Registr />} />
         <Route exact path="/rookery/:id" element={<Rookery />}/>
       </Routes>
     </BrowserRouter>
