@@ -68,6 +68,8 @@ const Main = styled.div`
 `
 const Left = styled.div`
   display: flex;
+  align-items: center;
+  position: relative;
   flex-direction: column;
   justify-content: end;
   `
@@ -123,6 +125,40 @@ const ActionCard = styled.div`
   padding:20px;
 `
 
+const Select = styled.button`
+display: flex;
+width: 200px;
+height: 40px;
+justify-content: center;
+align-items:center;
+`
+
+const Items = styled.div`
+display: flex;
+flex-direction: column;
+width: 200px;
+height: auto;
+position: absolute;
+background: white;
+
+left: calc(50% - 100px);
+top: 200px;
+`
+const Item = styled.div`
+display: flex;
+align-items: center;
+padding-left: 16px;
+border-bottom: 1px solid grey;
+height: 40px;
+
+&:hover {
+  background: lightgrey;
+}
+`
+
+// const Text = styled.span`
+// padding: `
+
 function getParams(from, to){
   //if (to && from) return ("from="+from.getYear()+"-"+from.getMonth()+"-"+from.getDate() +"&to=" + to.getYear()+"-"+to.getMonth()+"-"+to.getDate())
   if (to && from) return ("from="+from.toISOString().split('T')[0] +"&to=" + to.toISOString().split('T')[0])
@@ -133,11 +169,15 @@ export const Home = () => {
   const [state, setState] = React.useState(false)
   const [legbishe, setLegbishe] = React.useState()
   const [date, Calendarr] = React.useState()
+  const [isOpened, setIsOpened] = React.useState()
+  const [selected, setSelected] = React.useState(null)
 
   const [valueCalendar, onChangeCalendar] = React.useState(new Date());
 
   const [dateFrom,setDateFrom]=React.useState()
   const [dateTo,setDateTo]=React.useState()
+
+  const data =[{name: "Один", data: "один"},{name: "Два", data: "два"},{name: "Три", data: "три"},]
 
   return (
     <Wrapper >
@@ -149,12 +189,21 @@ export const Home = () => {
             <Main>
                 <Left>
                   <Text>Выберите лежбище и дату</Text>
-                  <Input
+                  <Select onClick={()=> setIsOpened(!isOpened)}>
+                    {selected}
+                    {isOpened && 
+                    <Items>
+                      {data.map((el)=> <Item onClick={()=> setSelected(el.name)}>{el.name}</Item>)}
+                    </Items>
+                   }
+                  </Select>
+                  {/* <Input
                     type='text'
                     value={legbishe}
                     onChange={e=>setLegbishe(e.target.value)}>
                   </Input>
-                  
+                   */}
+
                   <CalendarWrapper>
                     <Calendar onChange={(arr)=>{// arr[0] первая дата, arr[1] вторая
                         setDateFrom(arr[0])
