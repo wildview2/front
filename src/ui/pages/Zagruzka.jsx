@@ -5,11 +5,11 @@ import { theme } from "./../../theme"
 import { Calendarr } from "../components/Calendar"
 import Calendar from 'react-calendar'
 import 'react-calendar/dist/Calendar.css'
-import { Link } from "react-router-dom"
 
 const Wrapper = styled.div`
-overflow:
+overflow: auto
   display: flex;
+  position: relative;
   align-items: center;
   width: 100%;
   height: 100%;
@@ -63,9 +63,10 @@ const Submit = styled.button`
   opacity: 0.62;
 `
 const Main = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 50px 1fr;
-  width: 95%
+  display: flex;
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
 `
 const Left = styled.div`
   display: flex;
@@ -123,8 +124,19 @@ const ActionCard = styled.div`
   width:80%;
   padding:20px;
 `
+const UnderHeader = styled.div`
+display: flex;
+width: 100%;
+height: 40px;
+margin: 7px;
+justify-content: space-between;
 
-export const Home = () => {
+`
+const arrow = styled.div`
+
+`
+
+export const Zagruzka = () => {
   const [state, setState] = React.useState(false)
   const [legbishe, setLegbishe] = React.useState()
   const [date, Calendarr] = React.useState()
@@ -142,45 +154,11 @@ export const Home = () => {
                 <Submit>Выйти</Submit>
             </Head>
             <Main>
-                <Left>
-                  <Text>Выберите лежбище и дату</Text>
-                  <Input
-                    type='text'
-                    value={legbishe}
-                    onChange={e=>setLegbishe(e.target.value)}>
-                  </Input>
-                  
-                  <CalendarWrapper>
-                    <Calendar onChange={(arr)=>{// arr[0] первая дата, arr[1] вторая
-                      
-                      }} value={valueCalendar} selectRange={true} returnValue="range"/>
-                  </CalendarWrapper>
-                  
-                </Left>
+                <UnderHeader>
+                <Image src="../img/Arrow1.png" width="100%" height="100%" />
+                </UnderHeader>
                 
-                <Divider/>
-                 
-                <Right>
-                  <Text>Выберите задачу</Text>
-                  <Link to="/Zagruzka">
-                  <ActionCard>
-                    <img src="imgs/camera.jpg" height="140px" width="190px"></img>
-                  </ActionCard>
-                  </Link>
-                  <Link to="/Home">
-                  <ActionCard>
-                    <img src="imgs/squares.jpg" height="160px" width="160px"></img>
-                  </ActionCard>
-                  </Link>
-                </Right>
-            </Main>
-            {state.toString()}
-            <Link to ='/rookery/3?from=2007&to=2010'>
-              Тык
-            </Link>
-            
-           
-            
+            </Main>       
         </Content>
     </Wrapper>
   )
