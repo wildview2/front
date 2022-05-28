@@ -8,8 +8,9 @@ import 'react-calendar/dist/Calendar.css'
 import { Link } from "react-router-dom"
 
 const Wrapper = styled.div`
-overflow:
+overflow: auto
   display: flex;
+  position: relative;
   align-items: center;
   width: 100%;
   height: 100%;
@@ -63,9 +64,11 @@ const Submit = styled.button`
   opacity: 0.62;
 `
 const Main = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 50px 1fr;
-  width: 95%
+  display: flex;
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  align-items: center;
 `
 const Left = styled.div`
   display: flex;
@@ -77,25 +80,23 @@ const Right = styled.div`
 `
 const Divider = styled.div`
 height = 90%;
-border: 3px solid white;
+width: 15px;
+border: 5px solid white;
 border-radius:10px;
-margin: 50px 5px 0px 5px;
+margin: 10px 10px 0px 10px;
 `
 const Text = styled.div`
-  color: white;
+  color: black;
   text-align: center;
   font-style: normal;
-  font-weight: 400;
-  font-size: 50px;
-  padding: 17px 0px 17px 17px;
-  margin:10px auto;
-  
+  font-weight: 100;
+  font-size: 30px;
+  margin:15px;
 `
 const Input = styled.input`
   margin: 30px auto 30px auto;
   width:70%;
   background: white;
-  placeholder: 
   border-radius: 16px;
   padding: 16px;
   height: auto;
@@ -123,10 +124,26 @@ const ActionCard = styled.div`
   width:80%;
   padding:20px;
 `
+const UnderHeader = styled.div`
+display: flex;
+width: 90%;
+height: auto;
+margin: 7px;
+justify-content: space-between;
+`
+const Place = styled.div`
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+aling-item: center;
+`
+const TextPlace = styled.div`
+display: flex;
+margin: auto;
+flex-direction: column;
+`
 
-
-
-export const Home = () => {
+export const R34 = () => {
   const [state, setState] = React.useState(false)
   const [legbishe, setLegbishe] = React.useState()
   const [date, Calendarr] = React.useState()
@@ -137,52 +154,31 @@ export const Home = () => {
   const [dateTo,setDateTo]=React.useState()
 
   return (
-    <Wrapper onClick={() => setState(!state)}>
+    <Wrapper >
         <Content>
             <Head>
                 <Zag>Wildview</Zag>
+                <Link to="/">
                 <Submit>Выйти</Submit>
+                </Link>
             </Head>
             <Main>
-                <Left>
-                  <Text>Выберите лежбище и дату</Text>
-                  <Input
-                    type='text'
-                    value={legbishe}
-                    onChange={e=>setLegbishe(e.target.value)}>
-                  </Input>
-                  
-                  <CalendarWrapper>
-                    <Calendar onChange={(arr)=>{// arr[0] первая дата, arr[1] вторая
-                      
-                      }} value={valueCalendar} selectRange={true} returnValue="range"/>
-                  </CalendarWrapper>
-                  
-                </Left>
-                
-                <Divider/>
-                 
-                <Right>
-                  <Text>Выберите задачу</Text>
-                  <Link to="/Zagruzka">
-                  <ActionCard>
-                    <img src="imgs/camera.jpg" height="140px" width="190px"></img>
-                  </ActionCard>
-                  </Link>
-                  <Link to="/Home">
-                  <ActionCard>
-                    <img src="imgs/squares.jpg" height="160px" width="160px"></img>
-                  </ActionCard>
-                  </Link>
-                </Right>
-            </Main>
-            {state.toString()}
-            <Link to ='/rookery/3?from=2007&to=2010'>
-              Тык
-            </Link>
-            
-           
-            
+                <UnderHeader>
+                <Link to="/Home">
+                <img src="imgs/ar.png" height="30px" width="100px"></img>
+                </Link>
+                </UnderHeader>
+                <Place>
+                    <img src="imgs/Bigphoto.png" height="450px" width="450px"></img>
+                    <Divider/>
+                    <TextPlace>
+                    <Text>Лежбище № 1</Text>
+                    <Text>Дата: 24 мая</Text>
+                    <Text>Время: 12:32</Text>
+                    <Text>Численность: 181 </Text>
+                    </TextPlace>
+                </Place>
+            </Main>       
         </Content>
     </Wrapper>
   )

@@ -6,6 +6,7 @@ import { Home } from "./ui/pages/Home"
 import { Registr } from "./ui/pages/Registration"
 import { Zagruzka } from "./ui/pages/Zagruzka"
 import { Rookery } from "./ui/pages/Rookery"
+import { R34 } from "./ui/pages/R34"
 
 
 export default function App() {
@@ -18,6 +19,7 @@ export default function App() {
         <Route exact path="/Zagruzka" element={<Zagruzka />} />
         <Route exact path="/registration" element={<Registr />} />
         <Route exact path="/rookery/:id" element={<Rookery />}/>
+        <Route exact path="/R34" element={<R34 />}/>
       </Routes>
     </BrowserRouter>
   )
