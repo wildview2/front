@@ -48,7 +48,6 @@ export const Rookery = ()=>{
                         <Info>{from} — {to}</Info>
                     </Place>
                 </UnderHeader>
-                <img src="/imgs/photo.png" height="250px" width="320px" onClick={<input type="file"/>} ></img>
             </Content>
         </Wrapper>
     );

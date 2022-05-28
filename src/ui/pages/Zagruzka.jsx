@@ -6,7 +6,7 @@ import { Calendarr } from "../components/Calendar"
 import Calendar from 'react-calendar'
 import 'react-calendar/dist/Calendar.css'
 import { Link } from "react-router-dom"
-
+import axios from 'axios' 
 const Wrapper = styled.div`
 overflow: auto
   display: flex;
@@ -147,6 +147,30 @@ export const Zagruzka = () => {
   const [dateFrom,setDateFrom]=React.useState()
   const [dateTo,setDateTo]=React.useState()
 
+  const [uploadFile, setUploadFile] = React.useState();
+  const [superHero, setSuperHero] = React.useState();
+  
+  const submitForm = (event) => {
+    event.preventDefault();
+
+    const dataArray = new FormData();
+    dataArray.append("superHeroName", superHero);
+    dataArray.append("uploadFile", uploadFile);
+
+    axios
+      .post("api_url_here", dataArray, {
+        headers: {
+          "Content-Type": "multipart/form-data"
+        }
+      })
+      .then((response) => {
+        // successfully uploaded response
+      })
+      .catch((error) => {
+        // error response
+      });
+  };
+
   return (
     <Wrapper >
         <Content>
@@ -167,6 +191,19 @@ export const Zagruzka = () => {
                 </Place>
                 </UnderHeader>
                 <img src="imgs/photo.png" height="250px" width="320px" onClick={<input type="file"/>} ></img>
+                <div>
+                  <form onSubmit={submitForm}>
+                    <input
+                      type="text"
+                      onChange={(e) => setSuperHero(e.target.value)}
+                      placeholder={"Superhero Name"}
+                    />
+                    <br />
+                    <input type="file" onChange={(e) => setUploadFile(e.target.files)} />
+                    <br />
+                    <input type="submit" />
+                  </form>
+                </div>
 
             </Main>       
         </Content>
